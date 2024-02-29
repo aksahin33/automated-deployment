@@ -1,19 +1,23 @@
 import { logout } from "@/actions/logout";
 import { auth } from "@/auth";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function UserInformation() {
     const session = await auth();
 
     return session?.user?.image ? (
-        <div className="d-flex gap-2">
-            <div className="rounded-circle bg-white p-1">
+        <div className="d-flex align-items-center gap-2">
+            <div
+                className="rounded-circle d-flex align-items-center bg-white"
+                style={{ padding: "2px" }}>
                 <Image
                     title={session?.user?.email}
                     src={session?.user?.image}
                     alt={session?.user?.email}
                     width={30}
                     height={30}
+                    className="rounded-circle"
                 />
             </div>
             <form action={logout}>
@@ -23,8 +27,10 @@ export default async function UserInformation() {
             </form>
         </div>
     ) : (
-        <div>
-            <button className="btn btn-outline-warning">SIGN IN</button>
-        </div>
+        <Link href="/login">
+            <button className="btn btn-outline-warning" type="button">
+                SIGN IN
+            </button>
+        </Link>
     );
 }
