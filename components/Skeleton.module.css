@@ -1,0 +1,18 @@
+.container {
+    display: block;
+    height: 100%;
+    width: 100%;
+    animation: pulseAnimation 3s ease-in-out infinite;
+}
+
+@keyframes pulseAnimation {
+    0% {
+        background-color: #fe6d6d;
+    }
+    50% {
+        background-color: #eaeaea;
+    }
+    100% {
+        background-color: #fe6d6d;
+    }
+}
